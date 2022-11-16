@@ -18,8 +18,8 @@ void main()
 {
     UVs = texcoords;
     norms = normals;
-    pos = (modelMatrix * vec4(position + normals * sin(time * 3)/10, 1.0)).xyz;
-    gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position + normals * sin(time * 3)/10, 1.0);
+    pos = (modelMatrix * vec4(position + normals * sin(time * 0)/10, 1.0)).xyz;
+    gl_Position = projectionMatrix * viewMatrix * modelMatrix * vec4(position + normals * sin(time * 0)/10, 1.0);
 
 }
 '''
