@@ -13,6 +13,8 @@ height = 540
 
 deltaTime = 0.0
 
+zoom = -20
+
 pygame.init()
 
 screen = pygame.display.set_mode((width, height), pygame.OPENGL | pygame.DOUBLEBUF)
@@ -67,8 +69,7 @@ while isRunning:
                 rend.filledMode()
             elif event.key == pygame.K_x:
                 rend.wireframeMode()
-            
-
+    
     if keys[K_q]:
         if rend.camDistance > 2:
             rend.camDistance -= 2 * deltaTime
@@ -76,18 +77,36 @@ while isRunning:
         if rend.camDistance < 10:
             rend.camDistance += 2 * deltaTime
 
-    if keys[K_a]:
+    mouse = pygame.mouse.get_pos()
+    
+
+    if mouse[0]<480:
         rend.angle -= 30 * deltaTime
-    elif keys[K_d]:
+    elif mouse[0]>500:
         rend.angle += 30 * deltaTime
 
 
-    if keys[K_w]:
+    if mouse[1]>270:
         if rend.camPosition.y < 2:
             rend.camPosition.y += 5 * deltaTime
-    elif keys[K_s]:
+    elif mouse[1]<250:
         if rend.camPosition.y > -2:
             rend.camPosition.y -= 5 * deltaTime
+
+
+    rend.target.y = rend.camPosition.y
+
+    rend.camPosition.x = rend.target.x + sin(radians(rend.angle)) * rend.camDistance
+    rend.camPosition.z = rend.target.z + cos(radians(rend.angle)) * rend.camDistance
+    
+    if keys[K_LEFT]:
+        rend.pointLight.x -= 10 * deltaTime
+    elif keys[K_RIGHT]:
+        rend.pointLight.x += 10 * deltaTime
+    elif keys[K_UP]:
+        rend.pointLight.y += 10 * deltaTime
+    elif keys[K_DOWN]:
+        rend.pointLight.y -= 10 * deltaTime
 
     if keys[K_n]:
         rend.scene.clear()
@@ -98,23 +117,8 @@ while isRunning:
     elif keys[K_l]:
         rend.scene.clear()
         rend.scene.append( cookie )
-        
-        
 
-    rend.target.y = rend.camPosition.y
-
-    rend.camPosition.x = rend.target.x + sin(radians(rend.angle)) * rend.camDistance
-    rend.camPosition.z = rend.target.z + cos(radians(rend.angle)) * rend.camDistance
-
-    if keys[K_LEFT]:
-        rend.pointLight.x -= 10 * deltaTime
-
-    elif keys[K_RIGHT]:
-        rend.pointLight.x += 10 * deltaTime
-    elif keys[K_UP]:
-        rend.pointLight.y += 10 * deltaTime
-    elif keys[K_DOWN]:
-        rend.pointLight.y -= 10 * deltaTime
+    
 
     deltaTime = clock.tick(60) / 1000
     #print(deltaTime)
