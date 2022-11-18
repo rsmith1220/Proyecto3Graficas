@@ -34,31 +34,33 @@ rend.target.z = -5
 
 cookie = Model("cookie.obj", "body.bmp")
 
-cookie.position.z -= -10
+cookie.position.z -= 5
+cookie.position.y = 0
 cookie.scale.x = 2
 cookie.scale.y = 2
 cookie.scale.z = 2
 
 banana = Model("banana.obj", "banana.bmp")
-banana.position.z -= -10
+banana.position.z -= 5
 banana.scale.x = 12
 banana.scale.y = 12
 banana.scale.z = 12
 
 oreo = Model("oreo.obj", "skin.bmp")
-oreo.position.z -= -10
-oreo.scale.x = 0.1
-oreo.scale.y = 0.1
-oreo.scale.z = 0.1
+oreo.position.z -= 10
+oreo.position.y = 0
+oreo.scale.x = 0.05
+oreo.scale.y = 0.05
+oreo.scale.z = 0.05
 
 pan = Model("bread.obj", "pan.bmp")
-pan.position.z -= -10
-pan.scale.x = 1
-pan.scale.y = 1
-pan.scale.z = 1
+pan.position.z -= 5
+pan.scale.x = 0.5
+pan.scale.y = 0.5
+pan.scale.z = 0.5
 
 cup = Model("cupa.obj", "ceramic.bmp")
-cup.position.z -= -10
+cup.position.z -= 5
 cup.scale.x = 1
 cup.scale.y = 1
 cup.scale.z = 1
@@ -108,6 +110,19 @@ while isRunning:
         if rend.camPosition.y < 2:
             rend.camPosition.y += 5 * deltaTime
     elif mouse[1]<250:
+        if rend.camPosition.y > -2:
+            rend.camPosition.y -= 5 * deltaTime
+
+    if keys[K_a]:
+        rend.angle -= 30 * deltaTime
+    elif keys[K_d]:
+        rend.angle += 30 * deltaTime
+
+
+    if keys[K_w]:
+        if rend.camPosition.y < 2:
+            rend.camPosition.y += 5 * deltaTime
+    elif keys[K_s]:
         if rend.camPosition.y > -2:
             rend.camPosition.y -= 5 * deltaTime
 

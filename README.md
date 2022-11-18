@@ -3,8 +3,11 @@
 q to zoom
 e to unzoom
 
-wasd to move around obj
+'w,a,s,d'  or 'mouse movement' to move around obj
 
-n,m,l to change obj
+'n,m,l,j,k' to change obj
 
-arrows to change light
+'arrows' to change light
+
+'x' and 'z' to change shader
+
