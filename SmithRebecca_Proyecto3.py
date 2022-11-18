@@ -15,7 +15,13 @@ deltaTime = 0.0
 
 zoom = -20
 
+
+
 pygame.init()
+
+pygame.mixer.music.load('music.mp3')
+
+pygame.mixer.music.play(2)
 
 screen = pygame.display.set_mode((width, height), pygame.OPENGL | pygame.DOUBLEBUF)
 clock = pygame.time.Clock()
