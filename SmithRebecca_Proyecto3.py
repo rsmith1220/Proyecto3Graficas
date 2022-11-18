@@ -34,22 +34,34 @@ rend.target.z = -5
 
 cookie = Model("cookie.obj", "body.bmp")
 
-cookie.position.z -= 5
+cookie.position.z -= -10
 cookie.scale.x = 2
 cookie.scale.y = 2
 cookie.scale.z = 2
 
 banana = Model("banana.obj", "banana.bmp")
-banana.position.z -= 5
-banana.scale.x = 9
-banana.scale.y = 9
-banana.scale.z = 9
+banana.position.z -= -10
+banana.scale.x = 12
+banana.scale.y = 12
+banana.scale.z = 12
 
 oreo = Model("oreo.obj", "skin.bmp")
-oreo.position.z -= 3
-oreo.scale.x = 0.01
-oreo.scale.y = 0.01
-oreo.scale.z = 0.01
+oreo.position.z -= -10
+oreo.scale.x = 0.1
+oreo.scale.y = 0.1
+oreo.scale.z = 0.1
+
+pan = Model("bread.obj", "pan.bmp")
+pan.position.z -= -10
+pan.scale.x = 1
+pan.scale.y = 1
+pan.scale.z = 1
+
+cup = Model("cupa.obj", "ceramic.bmp")
+cup.position.z -= -10
+cup.scale.x = 1
+cup.scale.y = 1
+cup.scale.z = 1
 
 
 # face.position.z -= 10
@@ -123,6 +135,12 @@ while isRunning:
     elif keys[K_l]:
         rend.scene.clear()
         rend.scene.append( cookie )
+    elif keys[K_k]:
+        rend.scene.clear()
+        rend.scene.append( pan )
+    elif keys[K_j]:
+        rend.scene.clear()
+        rend.scene.append( cup )
 
     
 
